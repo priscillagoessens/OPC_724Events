@@ -1,10 +1,28 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Icon from "../../components/Icon";
 import "./style.scss";
 
 const Modal = ({ opened, Content, children }) => {
   const [isOpened, setIsOpened] = useState(opened);
+
+  useEffect(() => {
+    setIsOpened(opened);
+  }, [opened]);
+
+  useEffect(() => {
+    let timeoutId;
+    if (isOpened) {
+      timeoutId = setTimeout(() => {
+        setIsOpened(false);
+      }, 5000); // ajout d'un delai pour la fermeture de la modal
+    }
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [isOpened]);
+  
   return (
     <>
       {children({ isOpened, setIsOpened })}
