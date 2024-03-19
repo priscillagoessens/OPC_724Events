@@ -42,12 +42,14 @@ const Slider = () => {
           ))}
           <div className="SlideCard__paginationContainer">
             <div className="SlideCard__pagination">
-              {byDateDesc?.map((event, radioIdx) => (
+            {byDateDesc?.map((event, radioIdx) => (
                 <input
                   key={event.title}
                   type="radio"
                   name="radio-button"
                   checked={index === radioIdx}
+                  // ajout readOnly afin de ne plus avoir l'erreur du checked
+                  readOnly
                 />
               ))}
             </div>
