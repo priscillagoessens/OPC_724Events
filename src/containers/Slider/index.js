@@ -12,10 +12,11 @@ const Slider = () => {
   new Date(evtB.date) - new Date(evtA.date)
   );
 
-  const slides = data?.focus.length;
+  // si data et data.focus alors slides egale la longueur du tableau sinon 0
+  const slides = data && data.focus ? data.focus.length : 0;
   const nextCard = () => {
     setTimeout(
-      // ajout d'un -1 
+      // si index est inferieur a slides -1 alors increment de 1 sinon reinitialise a 0, action faites toutes les 5s
       () => setIndex(index < slides -1 ? index + 1 : 0),5000
     );
   };

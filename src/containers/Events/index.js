@@ -16,7 +16,7 @@ const EventList = () => {
   const filteredEvents = (
     (!type
       ? data?.events
-      // ajout de .filter((event) => event.type === type)) 
+      // on retourne les elements du tableau events correpndants a la valeur du type 
       : data?.events.filter((event) => event.type === type))  || []
   ).filter((event, index) => {
     if (

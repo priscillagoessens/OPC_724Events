@@ -14,7 +14,8 @@ import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
   const { data } = useData();
-  const last = data?.events[data.events.length - 1]; // on recupere la derniere info
+  // si data et data.events alors on recupere le dernier elements du tableau events sinon undefined
+  const last = data && data.events ? data.events[data.events.length - 1] : undefined; 
 
   return <>
     <header>
@@ -117,8 +118,7 @@ const Page = () => {
     </main>
     <footer className="row">
       <div className="col presta">
-        <h3>Notre derniére prestation</h3>
-        {last && ( // on verifie que last existe
+        <h3>Notre derniére prestation</h3> 
           <EventCard
             imageSrc={last?.cover}
             title={last?.title}
@@ -126,7 +126,6 @@ const Page = () => {
             small
             label="boom"
           />
-        )}
       </div>
       <div className="col contact">
         <h3>Contactez-nous</h3>
