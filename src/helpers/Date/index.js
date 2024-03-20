@@ -12,6 +12,6 @@ export const MONTHS = {
   10: "novembre",
   11: "décembre",
 };
-// changement de l'index des mois
+// changement de l'index des mois car il ne trouve pas janvier
 
 export const getMonth = (date) => MONTHS[date.getMonth()];
