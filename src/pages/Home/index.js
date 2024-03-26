@@ -14,8 +14,10 @@ import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
   const { data } = useData();
-  // si data et data.events alors on recupere le dernier elements du tableau events sinon null
-  const last = data && data.events ? data.events[data.events.length - 1] : null; 
+  // sort() pour trier le tableau d'events par date, et récupére le dernier event 0 du tableau 
+  const last = data?.events.sort(
+    (evtA, evtB) => new Date(evtB.date) - new Date(evtA.date)
+  )[0];
 
   return <>
     <header>
@@ -109,7 +111,7 @@ const Page = () => {
         >
           {({ setIsOpened }) => (
             <Form
-              onSuccess={() => setIsOpened(true)}
+              onSuccess={() => setIsOpened(true)} // Prop onSucess qui sera transmis au composant Form lors de la soumission
               onError={() => null}
             />
           )}

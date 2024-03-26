@@ -16,7 +16,8 @@ const Form = ({ onSuccess, onError }) => {
       try {
         await mockContactApi();
         setSending(false);
-        // ajout de onSucces()
+        // ajout de la fonction onSucces()
+        // passée en prop du parent Home
         onSuccess();
 
       } catch (err) {

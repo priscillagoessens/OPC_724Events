@@ -14,10 +14,9 @@ const EventList = () => {
   const [type, setType] = useState();
   const [currentPage, setCurrentPage] = useState(1);
   const filteredEvents = (
+    // si type alors retourne un tableau d'event filtrer par type OU si undefined ou null retroune un tableau vide
     (!type
-      ? data?.events
-      // on retourne les elements du tableau events correpndants a la valeur du type 
-      // erreur undefined
+      ? data?.events 
       : data?.events.filter((event) => event.type === type))  || []
   ).filter((event, index) => {
     if (

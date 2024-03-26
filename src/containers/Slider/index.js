@@ -8,16 +8,16 @@ const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
-  // modification du sens evtA < evtB 
+  // modification du sens evtA < evtB en soustraiant B - A cela tri par ordre decroissant
   new Date(evtB.date) - new Date(evtA.date)
   );
 
-  // si data et data.focus alors slides egale la longueur du tableau sinon 0
+  // si data et data.focus sont defini alors on recupere la longueur du tableau sinon 0
   const slides = data && data.focus ? data.focus.length : 0;
   const nextCard = () => {
     setTimeout(
-      // si index est inferieur a slides -1 alors increment de 1 sinon reinitialise a 0, action faites toutes les 5s
-      () => setIndex(index < slides -1 ? index + 1 : 0),5000
+      // On ajoute -1 pour verifié que l'index actuel ne depasse pas le total des slides , action faites toutes les 5s
+      () => setIndex(index < slides -1 ? index + 1 : 0), 5000
     );
   };
   useEffect(() => {

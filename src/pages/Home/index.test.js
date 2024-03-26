@@ -21,7 +21,7 @@ describe("When Form is created", () => {
         })
       );
       await screen.findByText("En cours");
-      // modification du test pour avoir un delai de reponse
+      // modification du test pour avoir un delai d'execution avec waitFor
       await waitFor(() => screen.queryByText("Message envoyé !"), {timeout:3000});
     });
   });
